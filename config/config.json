@@ -1,0 +1,16 @@
+{
+    "rpcUrl": "https://rpc.nano.to",
+    "apiKey": "YOUR API KEY HERE",
+    "workSendBlockDifficulty": "fffffff800000000",
+    "workReceiveBlockDifficulty": "fffffe0000000000",
+    "senderProbabilityWeight": 2,
+    "senderLowBound": 0.5,
+    "senderUpBound": 2,
+    "receiverProbabilityWeight": 3,
+    "receiverLowBound": 0.2,
+    "receiverUpBound": 2,
+    "mixDelayMean": 4,
+    "mixDelayStdDev": 1,
+    "txAmountMean": -2,
+    "txAmountStdDev": 0.5
+}

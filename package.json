@@ -1,0 +1,25 @@
+{
+  "name": "nanoise",
+  "version": "0.1.0",
+  "description": "A Node.js program to improve nano account privacy by generating random noise with shuffled transactions.",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "nanoise": "index.js"
+  },
+  "keywords": [
+    "nano",
+    "mix",
+    "mixer",
+    "shuffle",
+    "noise",
+    "random",
+    "crypto"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "nanocurrency-web": "^1.4.3",
+    "prompts": "^2.4.2"
+  }
+}
