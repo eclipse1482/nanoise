@@ -1,11 +1,9 @@
 {
   "name": "nanoise",
-  "version": "0.1.0",
+  "version": "0.1.7",
   "description": "A Node.js program to improve nano account privacy by generating random noise with shuffled transactions.",
-  "main": "index.js",
-  "type": "module",
   "bin": {
-    "nanoise": "index.js"
+    "nanoise": "src/index.mjs"
   },
   "keywords": [
     "nano",

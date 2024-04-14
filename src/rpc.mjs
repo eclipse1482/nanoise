@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { block } from 'nanocurrency-web'
-import { readConfig } from './config.js';
+import { readConfig } from './config.mjs';
 import { tools } from 'nanocurrency-web';
 
 export async function getAccountBalances(addresses) {

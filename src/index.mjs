@@ -1,10 +1,13 @@
-import { wallet } from 'nanocurrency-web'
-import { encryptWallet, decryptWallet, saveEncryptedWallet, generateEncryptionKey, encryptData, decryptData, doesWalletExist, generateTransactionDelay, masterAccountProbability, logNormal } from './utils.js';
-import { createSendBlock, processBlock, getReceivables, createReceiveBlock, getAccountBalances} from './rpc.js';
-import { readConfig } from './config.js';
+#!/usr/bin/env node
+
+import { wallet } from 'nanocurrency-web';
+import { encryptWallet, decryptWallet, saveEncryptedWallet, generateEncryptionKey, encryptData, decryptData, doesWalletExist, generateTransactionDelay, masterAccountProbability, logNormal } from './utils.mjs';
+import { createSendBlock, processBlock, getReceivables, createReceiveBlock, getAccountBalances} from './rpc.mjs';
+import { readConfig } from './config.mjs';
 import fs from 'fs';
 import path from 'path';
 import prompts from 'prompts';
+import os from 'os';
 
 // Initialization Function
 async function init(){
@@ -82,7 +85,7 @@ async function init(){
     const startIndex = 0;
 
     // Check if wallet directory exists
-    const hiddenDirPath = path.join(process.env.HOME, '.nanoise');
+    const hiddenDirPath = path.join(os.homedir(), '.nanoise');
     if (!fs.existsSync(hiddenDirPath)) {
         fs.mkdirSync(hiddenDirPath);
     }

@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { readConfig } from './config.js';
+import { readConfig } from './config.mjs';
 import fs from 'fs';
 
 // Encrypt data using PBKDF2 and AES
