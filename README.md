@@ -44,6 +44,13 @@ The following method is worth a try, and if you are persistent it will provide a
     Once installed, you can run NaNoise from any terminal at any location by simply typing:
     nanoise
 
+5. Future updates:
+
+    Nanoise can be updated by running:
+    npm update -g
+
+    **Note:** This will overwright your config file so please back it up if needed and reconfigure your app after the update is complete.
+
 ## Usage
 
 1. If installed globally as described in the [Installation section](#installation), nanoise can be run by typing "nanoise" into your terminal.
