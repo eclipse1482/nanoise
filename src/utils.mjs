@@ -50,7 +50,7 @@ export function generateEncryptionKey() {
 export function encryptData(data) {
     const password = Buffer.from(process.env.ENCRYPTION_KEY, 'hex'); // Use the encryption key from the environment variable
     const salt = crypto.randomBytes(16); // Generate random salt
-    const iterations = 1000000; // Number of iterations
+    const iterations = 4000000; // Number of iterations
     const keyLength = 32; // Key length in bytes (256 bits)
     const digest = 'sha512'; // Hash function
 
@@ -71,7 +71,7 @@ export function encryptData(data) {
 export function decryptData(encryptedData) {
     const password = Buffer.from(process.env.ENCRYPTION_KEY, 'hex'); // Use the encryption key from the environment variable
     const salt = Buffer.from(encryptedData.salt, 'hex'); // Convert salt from hex string to Buffer
-    const iterations = 1000000; // Number of iterations
+    const iterations = 4000000; // Number of iterations
     const keyLength = 32; // Key length in bytes (256 bits)
     const digest = 'sha512'; // Hash function
 

@@ -2,7 +2,7 @@
 
 This project is in beta. Please send me your feedback, bugs, suggestions, questions, etc. I want to make sure others are having success with this program and I have a few other features I want to add prior to releasing version 1.0.0.
 
-Improve privacy of your Nano cryptocurrency account balance by using the CLI program nanoise to shuffle transactions among many of your addresses. The goal of this project is not to defeat powerful chain analysis, but to make it challenging or impossible for casual observers to determine your overall account balance and decipher real transactions from decoy transactions.
+Improve privacy of your Nano cryptocurrency account balance by using the CLI program nanoise to *create noise* by shuffling transactions among many of your addresses. The goal of this project is not to defeat powerful chain analysis, but to make it challenging or impossible for casual observers to determine your overall account balance and decipher real transactions from decoy transactions.
 
 Nano's makes this possible by creating many addresses tied to the same seed. To the casual observer, these addresses are unlinked to eachother. However, they are all controlled by a single seed and wallet.
 
@@ -10,7 +10,7 @@ While this is a benefit, it is also a challenge because it can become difficult 
 
 If desired, you could still send funds from your decoy accounts, but then you will be linking your identify to your decoys. It is my opinion that you have better privacy by transacting from your main address because your counterparty will likely already know your identify and they won't be able to see your full balance or know what transactions are real or decoys.
 
-If you need to achieve true anonymity, this program is not designed for you. In that case, you should use a crypto like Monero. However, I believe this achieves a good level of privacy in a secure, self-hosted, user friendly, and free program.
+If you need to achieve true anonymity, this program is not designed for you. In that case, you should use a crypto like Monero. However, I believe this achieves a good level of privacy in a secure, self-hosted, user friendly, and free program. **Important:** This program does not save your mnemonic phrase or seed phrase. You accounts are derived from the seed phrase and then the seed phrase is disposed of. Your accounts are encrypted with PBKDF2 with 4 million iterations. They are only decrypted for the few seconds it takes to process a transaction.
 
 ## Installation
 
@@ -48,7 +48,7 @@ The following method is worth a try, and if you are persistent it will provide a
 
 1. If installed globally as described in the [Installation section](#installation), nanoise can be run by typing "nanoise" into your terminal.
 
-2. Mnemonic Phrase Prompt: At first startup, you will be prompted to add your mnemonic phrase. Currently it is only possible to import a 24 word nano mnemonic phrase. I will add additional options in the future.
+2. Mnemonic Phrase Prompt: At first startup, you will be prompted to add your mnemonic phrase. Currently it is only possible to import a 24 word nano mnemonic phrase. I will add additional options in the future. **Important:** Your mnemonic phrase and seed phrase are not stored. They are used to generate your accounts and then they are disposed of. Your accounts are encrypted and are only decrypted when required to process transactions.
 
 3. Password Prompt: This password will be used to encrypt your wallet derived from you mnemonic phrase. The encryption algorithm is PBKDF2 with 4 million iterations. Please note, your seed phrase is never stored, only the accounts derived from your seed phrase. However, the private keys for each address are also derived in order to do the shuffling. This is the reason I hardened the encryption settings to 4 million iterations.
 
