@@ -203,7 +203,7 @@ export async function createSendBlock(privateKey, fromAddress, toAddress, amount
 
         // Sign the block
         const signedSendBlock = block.send(data, privateKey);
-        //console.log(signedSendBlock);
+        //console.log('Signed send block: ',signedSendBlock);
 
         // Return the signed block
         return signedSendBlock;

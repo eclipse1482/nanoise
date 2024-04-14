@@ -38,7 +38,7 @@ async function init(){
     {
         type: 'select',
         name: 'delayFrequency',
-        message: 'What frequency would you like mixing transactions to run?',
+        message: 'What frequency would you like shuffling transactions to run in your Master address?',
         choices: [
             { title: 'Seconds', value: 's' },
             { title: 'Minutes', value: 'm' },
