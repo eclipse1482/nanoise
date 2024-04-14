@@ -75,7 +75,7 @@ Reminder: You must update your API Key in the configuration file prior to first 
 
 Listed below are the configuration parameters and their uses:
 
-- "rpcUrl": "https://rpc.nano.to" - This is the url to the rpc node you are using. I have it defaulted to rpc.nano.to.
+- "rpcUrl": <https://rpc.nano.to> - This is the url to the rpc node you are using. I have it defaulted to rpc.nano.to.
 - "apiKey": "YOUR API KEY HERE" - This is your API Key for the rpc node you are using. rpc.nano.to allows free API keys which will work for most uses.
     "workSendBlockDifficulty": "fffffff800000000" - This is the send block POW difficulty. In the future I will determine this dynamically, but for now it is most likely ok to leave this as is.
     "workReceiveBlockDifficulty": "fffffe0000000000" - This is the receive block POW difficulty. In the future I will determine this dynamically, but for now it is most likely ok to leave this as is.
