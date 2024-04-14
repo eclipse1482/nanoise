@@ -2,7 +2,7 @@
 
 This project is in beta. Please send me your feedback, bugs, suggestions, questions, etc. I want to make sure others are having success with this program and I have a few other features I want to add prior to releasing version 1.0.0.
 
-Improve privacy of your Nano cryptocurrency account balance by shuffling transactions among many of your addresses. The goal of this project is not to defeat powerful chain analysis, but to make it challenging or impossible for casual observers to determine your overall account balance and decipher real transactions from decoy transactions.
+Improve privacy of your Nano cryptocurrency account balance by using the CLI program nanoise to shuffle transactions among many of your addresses. The goal of this project is not to defeat powerful chain analysis, but to make it challenging or impossible for casual observers to determine your overall account balance and decipher real transactions from decoy transactions.
 
 Nano's makes this possible by creating many addresses tied to the same seed. To the casual observer, these addresses are unlinked to eachother. However, they are all controlled by a single seed and wallet.
 
