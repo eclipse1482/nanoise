@@ -14,17 +14,23 @@ If you need to achieve true anonymity, this program is not designed for you. In 
 
 ## Installation
 
-I will be adding this as an NPM package, but this is not done yet. Once complete, you can follow these steps:
+The simplest way to install and use this program is to download the files from the repository to a folder on your computer. Install node.js on your PC, then cd to the nanoise folder/src and type the command "node index.mjs". Make sure you have entered your API Key in the config.json file.
+
+The following method is worth a try, and if you are persistent it will provide a good user experience because "nanoise" can be called from your terminal at any location. I struggled setting this up at first, but the issue largely came down to the version of Node.js I had installed.
 
 1. Install Node.js:
 
-    Make sure you have Node.js installed on your system. You can download it from nodejs.org.
+    Make sure you have Node.js installed on your system. You can download it from nodejs.org. If you are getting import errors, etc., you might need to download a newer version of node.js <https://nodejs.org/en/download/package-manager/>
 
-2. Install NaNoise globally:
+2. Install nanoise globally:
 
     Open your terminal or command prompt.
-    Run the following command to globally install NaNoise:
+    Run the following command to globally install nanoise:
     npm install -g nanoise
+
+    If you are on Linux, you might need to run this command as sudo.
+
+    **The install location can be determined on Mac/Linux by typing "npm list -g" or on Windows navigating to C:\Users\{YourUsername}\AppData\Roaming\npm\node_modules. You will need this location to update your config.json file to add your API key.**
 
 3. Verify installation:
 
@@ -38,11 +44,9 @@ I will be adding this as an NPM package, but this is not done yet. Once complete
     Once installed, you can run NaNoise from any terminal at any location by simply typing:
     nanoise
 
-For now, all of the files are uploaded to this repository. Download them to a folder on your computer, open a terminal, navigate to the folder, and run "node index.js". Running the index.js file will start the program. You might need to install node.js and the following NPM packages: axios, prompts, and nanocurrency-web
-
 ## Usage
 
-1. If installed globally as described in the **Installation** section, nanoise can be run by typing "nanoise" into your terminal.
+1. If installed globally as described in the [Installation section](#installation), nanoise can be run by typing "nanoise" into your terminal.
 
 2. Mnemonic Phrase Prompt: At first startup, you will be prompted to add your mnemonic phrase. Currently it is only possible to import a 24 word nano mnemonic phrase. I will add additional options in the future.
 
@@ -56,7 +60,7 @@ For now, all of the files are uploaded to this repository. Download them to a fo
 
 7. Future starts will give you the option to import your existing wallet by entering your password, selcting a target balance and transaction frequency. Or, you can overwrite your wallet and enter a new or same mnemonic phrase. Entering the same phrase will give you the ability to adjust the End Index of your wallet.
 
-Many parameters can be adjusted in the config.json file. There are three spreadsheets attached which let you adjust the parameters and see the impact on the algorithms. See the **Configuration** section below.
+Many parameters can be adjusted in the config.json file. There are three spreadsheets attached which let you adjust the parameters and see the impact on the algorithms. See the [Configuration section below.](#configuration)
 
 Some cautions:
 
@@ -67,7 +71,26 @@ Some cautions:
 
 ## Configuration
 
-ToDo: Many configurations are available as well as spreadsheets to allow you to adjust parameters and see what their impacts will be on the program.
+Reminder: You must update your API Key in the configuration file prior to first use or you will not be able to process blocks. The result will be "Block hash: undefined". You can update your config.json file by navigating to the install location of your program. If you installed it with NPM, **The install location can be determined on Mac/Linux by typing "npm list -g" or on Windows navigating to C:\Users\{YourUsername}\AppData\Roaming\npm\node_modules.**
+
+Listed below are the configuration parameters and their uses:
+
+- "rpcUrl": "https://rpc.nano.to" - This is the url to the rpc node you are using. I have it defaulted to rpc.nano.to.
+- "apiKey": "YOUR API KEY HERE" - This is your API Key for the rpc node you are using. rpc.nano.to allows free API keys which will work for most uses.
+    "workSendBlockDifficulty": "fffffff800000000" - This is the send block POW difficulty. In the future I will determine this dynamically, but for now it is most likely ok to leave this as is.
+    "workReceiveBlockDifficulty": "fffffe0000000000" - This is the receive block POW difficulty. In the future I will determine this dynamically, but for now it is most likely ok to leave this as is.
+    "senderProbabilityWeight": 2 - This is the multiplier applied to the likelihood of selecting the Master address as the sender. Please see the spreadsheet "Compare Probabilities for Master to Send or Receive.ods" file for more details.
+    "senderLowBound": 0.5 - If your Master Balance / Target Balance drops below this, the probability for Master to send funds = 0%. Please see the spreadsheet "Compare Probabilities for Master to Send or Receive.ods" file for more details.
+    "senderUpBound": 2 - If your Master Balance / Target Balance rises above this, the probability for Master to send funds = (1 / Total Address) x senderProbability Weight. Please see the spreadsheet "Compare Probabilities for Master to Send or Receive.ods" file for more details.
+    "receiverProbabilityWeight": 3 - This is the multiplier applied to the likelihood of selecting the Master address as the receiver. Please see the spreadsheet "Compare Probabilities for Master to Send or Receive.ods" file for more details.
+    "receiverLowBound": 0.2 - If your Master Balance / Target Balance drops below this, the probability for Master to receive funds = (1 / Total Address) x receiverProbability Weight. Please see the spreadsheet "Compare Probabilities for Master to Send or Receive.ods" file for more details.
+    "receiverUpBound": 2 - If your Master Balance / Target Balance rises above this, the probability for Master to receive funds = 0%. Please see the spreadsheet "Compare Probabilities for Master to Send or Receive.ods" file for more details.
+    "mixDelayMean": 4 - mixDelay is a random number based on a log-normal distribution. Reducing the mean shortens the mixDelay while increasing the mean lengthens the mixDelay. Please see "Transaction Delay Calculations.ods" for more details.
+    "mixDelayStdDev": 1 - mixDelay is a random number based on a log-normal distribution. Reducing the Standard Deviation condenses the distribution of the results while increasing it broadens the distribution of results. Please see "Transaction Delay Calculations.ods" for more details.
+    "txAmountMean": -2 - The transaction amount is calculated based on a log-normal distribution to determine what percentage of the account balance should be sent. Reducing the mean will reduce the average transaction amount. Please see "Transaction Amount Calculations.odst" for more information.
+    "txAmountStdDev": 0.5 - The transaction amount is calculated based on a log-normal distribution to determine what percentage of the account balance should be sent. Reducing the standard deviation will reduce the breadth of transaction amounts that can be expected. Please see "Transaction Amount Calculations.odst" for more information.
+
+**Note:**  There are many configuration options available. I have set these to what worked best for me in my tests. If you want to adjust them, please first simulate the impact your changes will have by reviewing the attached .ods files.
 
 ## License
 
